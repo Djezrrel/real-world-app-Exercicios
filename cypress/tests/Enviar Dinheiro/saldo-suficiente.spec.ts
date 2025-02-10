@@ -1,26 +1,24 @@
-import elementos from '../Elementos/elementos';
-import contas from '../Elementos/contas';
-import contaBank from '../Elementos/contaBank';
+import elementos from "../Elementos/elementos";
+import contas from "../Elementos/contas";
+import contaBank from "../Elementos/contaBank";
 
-import ContaBanco from '../fixtures/ContaBanco.json'
+import ContaBanco from "../fixtures/ContaBanco.json";
 
-var Chance = require('chance');
+var Chance = require("chance");
 var chance = new Chance();
 
+describe("Enviar dinheiro com saldo suficiente", () => {
+  it("Deve enviar dinheiro com sucesso", () => {
+    // Implemente os passos do caso de teste aqui
 
-describe('Enviar dinheiro com saldo suficiente', () => {
-    it('Deve enviar dinheiro com sucesso', () => {
-      // Implemente os passos do caso de teste aqui
+    cy.visit("http://localhost:3000/signin");
 
-      cy.visit('http://localhost:3000/signin')
+    //login
+    cy.get(elementos.UserName).type(contas.username);
+    cy.get(elementos.Password).type(contas.password);
+    cy.get(elementos.SignIn).click();
 
-      //login
-      cy.get(elementos.UserName).type(contas.username)
-      cy.get(elementos.Password).type(contas.password)
-      cy.get(elementos.SignIn).click()
-      
-
-      /**
+    /**
       verifica se entrou
       cy.get(elementos.VerfyPag).contains('Next').click()
 
@@ -36,24 +34,24 @@ describe('Enviar dinheiro com saldo suficiente', () => {
 
      */
 
-      //verificar se esta dentro do banco
-      cy.get(contaBank.Verif_user).contains('Lillian Rowe')
+    //verificar se esta dentro do banco
+    cy.get(contaBank.Verif_user).contains("Lillian Rowe");
 
-      //ir para amigos
-      cy.get(contaBank.MutiTabBank).eq(1).click()
+    //ir para amigos
+    cy.get(contaBank.MutiTabBank).eq(1).click();
 
-      //criar transação
-      cy.get(contaBank.Create_trans).click()
+    //criar transação
+    cy.get(contaBank.Create_trans).click();
 
-      //escolhendo amigo
-      cy.get(contaBank.Lista_user).each(($element) => {
-        const text = $element.text().trim();
-        cy.log(`Encontrado: ${text}`);
-      
-        if (text.includes('Ted ParisianU')) {
-          cy.wrap($element).click({ force: true }); // Força o clique
-        }
-        /**
+    //escolhendo amigo
+    cy.get(contaBank.Lista_user).each(($element) => {
+      const text = $element.text().trim();
+      cy.log(`Encontrado: ${text}`);
+
+      if (text.includes("Ted ParisianU")) {
+        cy.wrap($element).click({ force: true }); // Força o clique
+      }
+      /**
        * cy.get(contaBank.Lista_user): Pega todos os elementos que correspondem ao seletor Lista_user.
         .each(($element) => { ... }): Itera sobre cada elemento encontrado na lista
 
@@ -70,14 +68,13 @@ describe('Enviar dinheiro com saldo suficiente', () => {
         .click({ force: true }): Força o clique mesmo se o elemento estiver coberto por outro (como um modal invisível ou uma animação)
 
        */
-      });
-
-      //enviando valor
-      cy.get(contaBank.Valor_enviar).eq(0).type('100000')
-      cy.get(contaBank.Valor_enviar).eq(1).type('Mandando MIL DOLARES')
-      cy.get(contaBank.Botao_enviarV).eq(1).click()
-
-      cy.get('[data-test="alert-bar-success"]').contains('Submitted')
-      
     });
+
+    //enviando valor
+    cy.get(contaBank.Valor_enviar).eq(0).type("100000");
+    cy.get(contaBank.Valor_enviar).eq(1).type("Mandando MIL DOLARES");
+    cy.get(contaBank.Botao_enviarV).eq(1).click();
+
+    cy.get('[data-test="alert-bar-success"]').contains("Submitted");
   });
+});
