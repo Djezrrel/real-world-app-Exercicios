@@ -1,8 +1,10 @@
 import elementos from '../Elementos/elementos';
 import contas from '../Elementos/contas';
+import contaBank from '../Elementos/contaBank';
 
 var Chance = require('chance');
 var chance = new Chance();
+
 
 
 describe('Registro de novo usuário com sucesso', () => {
@@ -16,7 +18,8 @@ describe('Registro de novo usuário com sucesso', () => {
       cy.get(elementos.SignIn).click()
   
       //verifica se entrou
-      cy.get(elementos.VerfyPag).contains('Next').click()
+      //cy.get(elementos.VerfyPag).contains('Next').click()
+      cy.get(contaBank.Verif_user).contains('Lillian Rowe')
 
     });
   });
