@@ -11,7 +11,7 @@ const contaBank = {
   Valor_enviar: ".MuiInputBase-input",
   Botao_enviarV: ".MuiButton-colorPrimary",
   Dinheiro: ".NavDrawer-amount",
-  Verif_dinheiro: "[data-test='transaction-item-V22v82ZDi']",
+  Verif_dinheiro: "[data-test='transaction-amount-bHwud-ZyY']",
   Sem_EnviarDim: "[data-test='empty-list-header']"
 };
 
