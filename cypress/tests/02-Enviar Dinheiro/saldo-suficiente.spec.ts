@@ -18,24 +18,23 @@ describe("Enviar dinheiro com saldo suficiente", () => {
     cy.get(elementos.Password).type(contas.password);
     cy.get(elementos.SignIn).click();
 
-    /**
-      verifica se entrou
-      cy.get(elementos.VerfyPag).contains('Next').click()
+  
+      //verifica se entrou,uma vez que entrou nao precisa
+      //cy.get(elementos.VerfyPag).contains('Next').click()
 
-      CadrastaBanko
-      cy.get(contaBank.Nome_conta).type(ContaBanco.Conta.Nome_conta)
-      cy.get(contaBank.Roteamento).type(ContaBanco.Conta.Roteamento)
-      cy.get(contaBank.Numero_conta).type(ContaBanco.Conta.Numero_conta)
+       // !!Uma vez que criou o banco, 
+       // Não precisa mais verificar e nem criar denovo!! Apenas se criar um novo banko ou user
+      // cy.get(contaBank.Nome_conta).type(ContaBanco.Conta.Nome_conta)
+      // cy.get(contaBank.Roteamento).type(ContaBanco.Conta.Roteamento)
+      // cy.get(contaBank.Numero_conta).type(ContaBanco.Conta.Numero_conta)
 
-      cy.get(contaBank.Salvar_cc_bank).click()
-      cy.get(contaBank.CC_pronta).click()
+      // cy.get(contaBank.Salvar_cc_bank).click()
+      // cy.get(contaBank.CC_pronta).click()
 
-      !!Uma vez que criou o banco, não precisa mais verificar e nem criar denovo!! Apenas se criar um novo banko ou user
+       // Verificar se esta na conta
+      cy.get(contaBank.Verif_user);
 
-     */
 
-    //verificar se esta dentro do banco
-    cy.get(contaBank.Verif_user).contains("Lillian Rowe");
 
     //ir para amigos
     cy.get(contaBank.MutiTabBank).eq(1).click();

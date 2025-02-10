@@ -4,13 +4,15 @@ const contaBank = {
   Numero_conta: "#bankaccount-accountNumber-input",
   Salvar_cc_bank: ".BankAccountForm-submit",
   CC_pronta: ".MuiButton-colorPrimary",
-  Verif_user: ".MuiDrawer-paper",
+  Verif_user: ".MuiAvatar-circular",
   MutiTabBank: ".MuiTab-root",
   Create_trans: ".MuiButton-colorPrimary",
   Lista_user: ".MuiListItem-root",
   Valor_enviar: ".MuiInputBase-input",
   Botao_enviarV: ".MuiButton-colorPrimary",
   Dinheiro: ".NavDrawer-amount",
+  Verif_dinheiro: "[data-test='transaction-item-V22v82ZDi']",
+  Sem_EnviarDim: "[data-test='empty-list-header']"
 };
 
 export default contaBank;

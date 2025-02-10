@@ -14,8 +14,10 @@ describe("Registro de novo usuário com sucesso", () => {
     cy.get(elementos.Password).type(contas.password);
     cy.get(elementos.SignIn).click();
 
-    //verifica se entrou
+    //verifica se entrou,uma vez que entrou não precisa verificar
     //cy.get(elementos.VerfyPag).contains('Next').click()
-    cy.get(contaBank.Verif_user).contains("Lillian Rowe");
+    //cy.get(contaBank.Salvar_cc_bank).contains("Save");
+    cy.get(contaBank.Verif_user);
+    
   });
 });

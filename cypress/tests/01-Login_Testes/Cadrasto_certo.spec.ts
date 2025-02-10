@@ -23,5 +23,7 @@ describe("Login com sucesso", () => {
     //logando conta nova
     cy.get(elementos.CadastrarCC).click();
     cy.get(elementos.CriarCC).contains("Sign Up");
+
+
   });
 });

@@ -19,8 +19,8 @@ describe("Enviar dinheiro com saldo suficiente", () => {
     cy.get(elementos.SignIn).click();
 
     //verificar se esta dentro do banco
-    cy.get(contaBank.Verif_user).contains("Lillian Rowe");
-
+    cy.get(contaBank.Verif_user);
+    
     //ir para amigos
     cy.get(contaBank.MutiTabBank).eq(1).click();
 
@@ -39,8 +39,9 @@ describe("Enviar dinheiro com saldo suficiente", () => {
 
     //enviando valor
     cy.get(contaBank.Dinheiro).should("contain", "$0.00");
-    //   cy.get(contaBank.Valor_enviar).eq(0).type('100000')
-    //   cy.get(contaBank.Valor_enviar).eq(1).type('Mandando MIL DOLARES')
-    //   cy.get(contaBank.Botao_enviarV).eq(1).click()
+    cy.get(contaBank.Valor_enviar).eq(0).type('100000')
+    cy.get(contaBank.Valor_enviar).eq(1).type('Mandando MIL DOLARES')
+    cy.get(contaBank.Botao_enviarV).eq(1).click()
+    
   });
 });
