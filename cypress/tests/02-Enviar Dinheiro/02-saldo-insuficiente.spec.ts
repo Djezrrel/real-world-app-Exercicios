@@ -18,6 +18,18 @@ describe("Enviar dinheiro com saldo insuficiente", () => {
     cy.get(elementos.Password).type(contas.password);
     cy.get(elementos.SignIn).click();
 
+     //checkout 1x
+    //  cy.get(elementos.VerfyPag).contains('Next').click()
+    //  cy.get(contaBank.Salvar_cc_bank).contains("Save");
+
+     //cadrasta banco
+    // cy.get(contaBank.Nome_conta).type(ContaBanco.Conta.Nome_conta)
+    // cy.get(contaBank.Roteamento).type(ContaBanco.Conta.Roteamento)
+    // cy.get(contaBank.Numero_conta).type(ContaBanco.Conta.Numero_conta)
+
+    // cy.get(contaBank.Salvar_cc_bank).click()
+    // cy.get(contaBank.CC_pronta).click()
+
     //verificar se esta dentro do banco
     cy.get(contaBank.Verif_user);
     
@@ -42,6 +54,7 @@ describe("Enviar dinheiro com saldo insuficiente", () => {
     cy.get(contaBank.Valor_enviar).eq(0).type('100000')
     cy.get(contaBank.Valor_enviar).eq(1).type('Mandando MIL DOLARES')
     cy.get(contaBank.Botao_enviarV).eq(1).click()
-    
+
+    cy.get('[data-test="alert-bar-success"]').contains("Falta dinheiro,isso é bug");
   });
 });
