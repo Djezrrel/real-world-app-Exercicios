@@ -7,7 +7,7 @@ import ContaBanco from "../fixtures/ContaBanco.json";
 var Chance = require("chance");
 var chance = new Chance();
 
-describe("Enviar dinheiro com saldo suficiente", () => {
+describe("Enviar dinheiro com saldo insuficiente", () => {
   it("Deve enviar dinheiro com sucesso", () => {
     // Implemente os passos do caso de teste aqui
 
