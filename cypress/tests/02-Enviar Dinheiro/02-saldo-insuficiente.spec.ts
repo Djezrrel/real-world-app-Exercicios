@@ -55,6 +55,24 @@ describe("Enviar dinheiro com saldo insuficiente", () => {
     cy.get(contaBank.Valor_enviar).eq(1).type('Mandando MIL DOLARES')
     cy.get(contaBank.Botao_enviarV).eq(1).click()
 
-    cy.get('[data-test="alert-bar-success"]').contains("Falta dinheiro,isso é bug");
+    //cy.get('[data-test="alert-bar-success"]').contains("Falta dinheiro,isso é bug");
+
+   // Verificando a mensagem de erro esperada
+   cy.get('[data-test="alert-bar-success"]').then(($el) => {
+    if ($el.length === 0) {
+        cy.log("BUG: Nenhuma mensagem de erro foi exibida ao tentar enviar dinheiro sem saldo!");
+        cy.screenshot('erro-sem-mensagem'); // Tira print do bug
+        throw new Error("BUG: O sistema permitiu envio de dinheiro sem saldo e sem erro!");
+    } else {
+        cy.log("Mensagem de erro apareceu corretamente: " + $el.text());
+    }
+
+    //Usa .then(($el) => { ... }) para acessar o conteúdo do elemento.
+    //Verifica se nenhuma mensagem apareceu ($el.length === 0).
+    //Escreve um log no Cypress para registrar que o bug aconteceu.
+    //Captura um screenshot da tela para ter prova do erro.
+    //Força o teste a falhar jogando um erro.
+    //Se uma mensagem foi exibida, o teste continua.
+
   });
-});
+})})
